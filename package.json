@@ -1,0 +1,8 @@
+{
+  "name": "openclaw-security",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "OpenClawのセキュリティ検証・ナレッジ蓄積リポジトリ",
+  "scripts": {},
+  "dependencies": {}
+}

@@ -1,0 +1,10 @@
+{
+  "title": "OpenClaw Security Knowledge Base",
+  "description": "OpenClawのセキュリティ検証・ナレッジベース",
+  "language": "ja",
+  "gitbook": ">= 3.2.0",
+  "root": "./docs",
+  "structure": {
+    "summary": "SUMMARY.md"
+  }
+}
