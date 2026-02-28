@@ -1,8 +1,8 @@
 # Summary
 
-* [はじめに](README.md)
+* [はじめに - OpenClawを安全に使うために](README.md)
 
-## 脆弱性事例
+## 調べる - 脆弱性事例
 
 * [概要](vulnerabilities/README.md)
 * [プロンプトインジェクション](vulnerabilities/prompt-injection.md)
@@ -11,15 +11,15 @@
 * [認証バイパス](vulnerabilities/auth-bypass.md)
 * [データ漏洩](vulnerabilities/data-leakage.md)
 
-## アップデート情報
+## 調べる - アップデート情報
 
 * [概要](updates/README.md)
 
-## ベストプラクティス
+## 守る - ベストプラクティス
 
 * [概要](best-practices/README.md)
 
-## テストケース
+## 試す - テストケース
 
 * [概要](test-cases/README.md)
 
