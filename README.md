@@ -30,6 +30,14 @@ OpenClawのセキュリティを改善するためのリポジトリです。
 /research-bestpractice llm-security   # ベストプラクティスを調査
 ```
 
+### バージョン診断する
+```bash
+/check-version 2026.2.10             # 使用中のバージョンの脆弱性を診断
+
+# スクリプトで直接実行も可能
+npx tsx scripts/version-check.ts 2026.2.10
+```
+
 ### テストする
 ```bash
 /create-testcase prompt-injection     # 攻撃テストケースを作成
