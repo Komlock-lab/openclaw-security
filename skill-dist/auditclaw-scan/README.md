@@ -1,4 +1,4 @@
-# OpenClaw Security Scan Skill
+# AuditClaw Scan Skill
 
 A self-diagnostic security skill for identifying known vulnerabilities and runtime configuration issues in OpenClaw.
 
@@ -48,7 +48,7 @@ bash scan.sh 2026.2.10 /path/to/vulnerability-db.json
 - **runtimeChecks**: Runtime configuration check items
 - **permanentWarnings**: Warnings common to all versions
 
-The database is maintained in the [openclaw-security repository](https://github.com/natsuki/openclaw-security).
+The database is maintained in the [auditclaw repository](https://github.com/natsuki/auditclaw).
 
 ## DB Retrieval Flow
 
@@ -62,7 +62,7 @@ graph TD
 ## Output Example
 
 ```
-# OpenClaw Security Scan Results
+# AuditClaw Scan Results
 
 | Item | Value |
 |------|-------|
@@ -104,7 +104,7 @@ graph TD
 
 ## DB Updates
 
-The vulnerability database is managed in the [openclaw-security repository](https://github.com/natsuki/openclaw-security). During scan execution, the latest version is automatically fetched from GitHub; when offline, the bundled version is used.
+The vulnerability database is managed in the [auditclaw repository](https://github.com/natsuki/auditclaw). During scan execution, the latest version is automatically fetched from GitHub; when offline, the bundled version is used.
 
 DB update triggers:
 - New OpenClaw security advisory published

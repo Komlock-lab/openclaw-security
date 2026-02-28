@@ -1,7 +1,7 @@
 /**
- * OpenClaw Security Scan Skill Build Script
+ * AuditClaw Scan Skill Build Script
  *
- * Copies data/vulnerability-db.json to skill-dist/openclaw-security-scan/
+ * Copies data/vulnerability-db.json to skill-dist/auditclaw-scan/
  * and runs integrity checks.
  *
  * Usage:
@@ -16,11 +16,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
 
 const SOURCE_DB = resolve(ROOT, "data/vulnerability-db.json");
-const DEST_DB = resolve(ROOT, "skill-dist/openclaw-security-scan/vulnerability-db.json");
-const SKILL_DIR = resolve(ROOT, "skill-dist/openclaw-security-scan");
+const DEST_DB = resolve(ROOT, "skill-dist/auditclaw-scan/vulnerability-db.json");
+const SKILL_DIR = resolve(ROOT, "skill-dist/auditclaw-scan");
 
 function main() {
-  console.log("=== OpenClaw Security Scan Skill Build ===\n");
+  console.log("=== AuditClaw Scan Skill Build ===\n");
 
   // 1. Check source DB exists
   if (!existsSync(SOURCE_DB)) {
@@ -110,7 +110,7 @@ function main() {
   console.log(`DB updated: ${db.metadata.lastUpdated}`);
   console.log(`Latest OpenClaw version: ${db.metadata.latestOpenClawVersion}`);
   console.log(`Vulnerabilities: Critical ${bySeverity.critical} / High ${bySeverity.high} / Medium ${bySeverity.medium} / Low ${bySeverity.low}`);
-  console.log(`Output: skill-dist/openclaw-security-scan/vulnerability-db.json`);
+  console.log(`Output: skill-dist/auditclaw-scan/vulnerability-db.json`);
 }
 
 main();

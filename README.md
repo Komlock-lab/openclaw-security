@@ -1,6 +1,6 @@
 **English** | [日本語](README.ja.md)
 
-# OpenClaw Security
+# AuditClaw
 
 A repository for improving the security of OpenClaw.
 
@@ -55,13 +55,13 @@ npx tsx scripts/version-check.ts 2026.2.10
 ## Quick Scan
 
 ```bash
-curl -sL https://raw.githubusercontent.com/natsuki/openclaw-security/main/skill-dist/openclaw-security-scan/scan.sh | bash
+curl -sL https://raw.githubusercontent.com/natsuki/auditclaw/main/skill-dist/auditclaw-scan/scan.sh | bash
 ```
 
 That's it. Auto-detects your OpenClaw version and outputs a Markdown security report. To scan a specific version:
 
 ```bash
-curl -sL https://raw.githubusercontent.com/natsuki/openclaw-security/main/skill-dist/openclaw-security-scan/scan.sh | bash -s 2026.2.10
+curl -sL https://raw.githubusercontent.com/natsuki/auditclaw/main/skill-dist/auditclaw-scan/scan.sh | bash -s 2026.2.10
 ```
 
 ## OpenClaw Skill Integration

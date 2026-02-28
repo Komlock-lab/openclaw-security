@@ -1,6 +1,6 @@
 [English](README.md) | **日本語**
 
-# OpenClaw Security
+# AuditClaw
 
 OpenClawのセキュリティを改善するためのリポジトリです。
 
@@ -55,13 +55,13 @@ npx tsx scripts/version-check.ts 2026.2.10
 ## クイックスキャン
 
 ```bash
-curl -sL https://raw.githubusercontent.com/natsuki/openclaw-security/main/skill-dist/openclaw-security-scan/scan.sh | bash
+curl -sL https://raw.githubusercontent.com/natsuki/auditclaw/main/skill-dist/auditclaw-scan/scan.sh | bash
 ```
 
 これだけ。OpenClawのバージョンを自動検出してMarkdownセキュリティレポートを出力します。特定バージョンを指定する場合:
 
 ```bash
-curl -sL https://raw.githubusercontent.com/natsuki/openclaw-security/main/skill-dist/openclaw-security-scan/scan.sh | bash -s 2026.2.10
+curl -sL https://raw.githubusercontent.com/natsuki/auditclaw/main/skill-dist/auditclaw-scan/scan.sh | bash -s 2026.2.10
 ```
 
 ## OpenClawスキル統合

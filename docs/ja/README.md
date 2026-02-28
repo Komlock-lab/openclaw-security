@@ -1,4 +1,4 @@
-# OpenClaw Security Knowledge Base
+# AuditClaw Knowledge Base
 
 ## OpenClawを安全に使うために
 

@@ -424,7 +424,7 @@ npm経由で@adversa/secureclawをインストール。Plugin SDKを通じて登
 
 ## OpenClaw-Securityプロジェクトへの示唆
 
-SecureClawの分析から、我々のopenclaw-securityプロジェクトで参考にすべき点:
+SecureClawの分析から、我々のauditclawプロジェクトで参考にすべき点:
 
 1. **攻撃テストケース設計**: SecureClawが検出する56のチェックそれぞれに対するバイパステストケースを作成できる
 2. **injection-patterns.jsonの回避テスト**: 70+パターンを回避するインジェクション手法のテスト

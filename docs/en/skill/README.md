@@ -17,21 +17,21 @@ A self-diagnostic security skill that can be embedded into OpenClaw. Just say "s
 
 ```bash
 # Clone this repository
-git clone https://github.com/natsuki/openclaw-security.git
+git clone https://github.com/natsuki/auditclaw.git
 
 # Copy skill directory to your OpenClaw skills folder
-cp -r openclaw-security/skill-dist/openclaw-security-scan /path/to/openclaw/skills/
+cp -r auditclaw/skill-dist/auditclaw-scan /path/to/openclaw/skills/
 ```
 
 ### Option 2: Direct Download
 
 ```bash
 # Download skill files directly
-mkdir -p skills/openclaw-security-scan
-curl -sL https://raw.githubusercontent.com/natsuki/openclaw-security/main/skill-dist/openclaw-security-scan/SKILL.md -o skills/openclaw-security-scan/SKILL.md
-curl -sL https://raw.githubusercontent.com/natsuki/openclaw-security/main/skill-dist/openclaw-security-scan/scan.sh -o skills/openclaw-security-scan/scan.sh
-curl -sL https://raw.githubusercontent.com/natsuki/openclaw-security/main/skill-dist/openclaw-security-scan/vulnerability-db.json -o skills/openclaw-security-scan/vulnerability-db.json
-chmod +x skills/openclaw-security-scan/scan.sh
+mkdir -p skills/auditclaw-scan
+curl -sL https://raw.githubusercontent.com/natsuki/auditclaw/main/skill-dist/auditclaw-scan/SKILL.md -o skills/auditclaw-scan/SKILL.md
+curl -sL https://raw.githubusercontent.com/natsuki/auditclaw/main/skill-dist/auditclaw-scan/scan.sh -o skills/auditclaw-scan/scan.sh
+curl -sL https://raw.githubusercontent.com/natsuki/auditclaw/main/skill-dist/auditclaw-scan/vulnerability-db.json -o skills/auditclaw-scan/vulnerability-db.json
+chmod +x skills/auditclaw-scan/scan.sh
 ```
 
 ## Usage
@@ -52,7 +52,7 @@ Simply say one of the following to automatically trigger a scan:
 bash scan.sh 2026.2.10
 
 # Output example (Markdown report):
-# # OpenClaw Security Scan Results
+# # AuditClaw Scan Results
 # | Severity | Count |
 # |----------|-------|
 # | Critical | 1 |
@@ -101,7 +101,7 @@ graph TD
 
 ## Vulnerability DB Updates
 
-The vulnerability database is managed in the [openclaw-security repository](https://github.com/natsuki/openclaw-security). The latest version is automatically fetched from GitHub during scan execution; when offline, the bundled version is used.
+The vulnerability database is managed in the [auditclaw repository](https://github.com/natsuki/auditclaw). The latest version is automatically fetched from GitHub during scan execution; when offline, the bundled version is used.
 
 DB update triggers:
 - New OpenClaw security advisory published

@@ -1,5 +1,5 @@
 {
-  "title": "OpenClaw Security Knowledge Base",
+  "title": "AuditClaw Knowledge Base",
   "description": "Security verification and knowledge base for OpenClaw",
   "gitbook": ">= 3.2.0",
   "root": "./docs",

@@ -1,6 +1,6 @@
 # Security Setup Guide
 
-Best practices for securely setting up and using the OpenClaw Security Scan skill.
+Best practices for securely setting up and using the AuditClaw Scan skill.
 
 ## Directory Placement Risks
 
@@ -13,7 +13,7 @@ When `sandbox.mode` is `off` (default), OpenClaw has full filesystem access thro
 ```
 ~/projects/
 ├── openclaw/                  # OpenClaw installation
-├── openclaw-security-scan/    # This skill (sibling)
+├── auditclaw-scan/    # This skill (sibling)
 ├── my-secret-project/         # ← OpenClaw CAN access this
 └── .env                       # ← OpenClaw CAN access this
 ```
@@ -23,7 +23,7 @@ Even if the skill is in a child directory:
 ```
 ~/projects/openclaw/
 ├── skills/
-│   └── openclaw-security-scan/   # This skill
+│   └── auditclaw-scan/   # This skill
 ├── config.json
 └── ../../my-secret-project/      # ← OpenClaw CAN traverse up
 ```
@@ -46,7 +46,7 @@ It does **not** read your code, secrets, conversation history, or any other file
 No installation needed. Nothing is persisted on your system except a temporary DB file at `/tmp/openclaw-vuln-db.json`.
 
 ```bash
-curl -sL https://raw.githubusercontent.com/natsuki/openclaw-security/main/skill-dist/openclaw-security-scan/scan.sh | bash
+curl -sL https://raw.githubusercontent.com/natsuki/auditclaw/main/skill-dist/auditclaw-scan/scan.sh | bash
 ```
 
 ### Standard (Skill Installation)
@@ -54,7 +54,7 @@ curl -sL https://raw.githubusercontent.com/natsuki/openclaw-security/main/skill-
 Install the skill in OpenClaw's skill directory:
 
 ```bash
-cp -r openclaw-security-scan /path/to/openclaw/skills/
+cp -r auditclaw-scan /path/to/openclaw/skills/
 ```
 
 ### Hardened (Recommended for Production)
@@ -96,7 +96,7 @@ cp -r openclaw-security-scan /path/to/openclaw/skills/
 ├── .ssh/                         # SSH keys
 ├── openclaw/
 │   └── skills/
-│       └── openclaw-security-scan/
+│       └── auditclaw-scan/
 └── client-projects/
     ├── project-a/                # Client code
     └── project-b/                # Client code
@@ -111,7 +111,7 @@ With sandbox off, OpenClaw can access `~/.env`, `~/.ssh/`, and all client projec
 ├── openclaw/
 │   ├── config.json               # sandbox: all
 │   └── skills/
-│       └── openclaw-security-scan/
+│       └── auditclaw-scan/
 └── workspace/                    # Only files OpenClaw should access
 ```
 

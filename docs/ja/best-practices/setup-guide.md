@@ -1,6 +1,6 @@
 # セキュリティセットアップガイド
 
-OpenClaw Security Scanスキルを安全にセットアップ・利用するためのベストプラクティスです。
+AuditClaw Scanスキルを安全にセットアップ・利用するためのベストプラクティスです。
 
 ## ディレクトリ配置のリスク
 
@@ -13,7 +13,7 @@ OpenClaw Security Scanスキルを安全にセットアップ・利用するた�
 ```
 ~/projects/
 ├── openclaw/                  # OpenClawインストール先
-├── openclaw-security-scan/    # このスキル（兄弟）
+├── auditclaw-scan/    # このスキル（兄弟）
 ├── my-secret-project/         # ← OpenClawはアクセス可能
 └── .env                       # ← OpenClawはアクセス可能
 ```
@@ -23,7 +23,7 @@ OpenClaw Security Scanスキルを安全にセットアップ・利用するた�
 ```
 ~/projects/openclaw/
 ├── skills/
-│   └── openclaw-security-scan/   # このスキル
+│   └── auditclaw-scan/   # このスキル
 ├── config.json
 └── ../../my-secret-project/      # ← OpenClawは上に遡れる
 ```
@@ -46,7 +46,7 @@ OpenClaw Security Scanスキルを安全にセットアップ・利用するた�
 インストール不要。一時的なDBファイル（`/tmp/openclaw-vuln-db.json`）以外、システムに何も残りません。
 
 ```bash
-curl -sL https://raw.githubusercontent.com/natsuki/openclaw-security/main/skill-dist/openclaw-security-scan/scan.sh | bash
+curl -sL https://raw.githubusercontent.com/natsuki/auditclaw/main/skill-dist/auditclaw-scan/scan.sh | bash
 ```
 
 ### 標準構成（スキルインストール）
@@ -54,7 +54,7 @@ curl -sL https://raw.githubusercontent.com/natsuki/openclaw-security/main/skill-
 OpenClawのスキルディレクトリにコピー:
 
 ```bash
-cp -r openclaw-security-scan /path/to/openclaw/skills/
+cp -r auditclaw-scan /path/to/openclaw/skills/
 ```
 
 ### 堅牢構成（本番環境推奨）
@@ -96,7 +96,7 @@ cp -r openclaw-security-scan /path/to/openclaw/skills/
 ├── .ssh/                         # SSH鍵
 ├── openclaw/
 │   └── skills/
-│       └── openclaw-security-scan/
+│       └── auditclaw-scan/
 └── client-projects/
     ├── project-a/                # クライアントのコード
     └── project-b/                # クライアントのコード
@@ -111,7 +111,7 @@ cp -r openclaw-security-scan /path/to/openclaw/skills/
 ├── openclaw/
 │   ├── config.json               # sandbox: all
 │   └── skills/
-│       └── openclaw-security-scan/
+│       └── auditclaw-scan/
 └── workspace/                    # OpenClawがアクセスすべきファイルのみ
 ```
 

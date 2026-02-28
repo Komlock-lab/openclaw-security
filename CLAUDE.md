@@ -1,11 +1,11 @@
-# OpenClaw Security
+# AuditClaw
 
 Repository for improving OpenClaw security. Covers attack test case creation/execution and security knowledge accumulation.
 
 ## Project Structure
 
 ```
-openclaw-security/
+auditclaw/
 ├── .claude/commands/    # Slash commands
 ├── .claude/skills/      # Skill definitions
 ├── data/                # Canonical data source
@@ -17,7 +17,7 @@ openclaw-security/
 │   └── ja/              # Japanese documentation
 ├── knowledge/           # Internal knowledge (raw research data)
 ├── skill-dist/          # Distributable skills
-│   └── openclaw-security-scan/  # Security self-scan skill
+│   └── auditclaw-scan/  # Security self-scan skill
 ├── tests/               # Attack test cases (by category)
 ├── reports/             # Verification reports
 ├── scripts/             # Utility scripts

@@ -95,7 +95,7 @@ function main() {
   const db = loadVulnerabilityDB();
 
   console.log(`\n========================================`);
-  console.log(`  OpenClaw Security Scan`);
+  console.log(`  AuditClaw Scan`);
   console.log(`  Target version: ${version}`);
   console.log(`  Latest version: ${db.metadata.latestOpenClawVersion}`);
   console.log(`  DB updated: ${db.metadata.lastUpdated}`);

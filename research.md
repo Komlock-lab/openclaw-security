@@ -1,4 +1,4 @@
-# OpenClaw Security リサーチ
+# AuditClaw リサーチ
 
 ## 1. OpenClawとは
 

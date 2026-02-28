@@ -1,4 +1,4 @@
-# OpenClaw Security Self-Scan
+# AuditClaw Self-Scan
 
 A skill for self-diagnosing known vulnerabilities and runtime configuration issues in OpenClaw.
 
@@ -51,7 +51,7 @@ Retrieve the latest vulnerability database. First try GitHub, then fall back to 
 SKILL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
 
 # Fetch latest from GitHub (5-second timeout)
-DB_URL="https://raw.githubusercontent.com/natsuki/openclaw-security/main/data/vulnerability-db.json"
+DB_URL="https://raw.githubusercontent.com/natsuki/auditclaw/main/data/vulnerability-db.json"
 LATEST_DB=$(curl -sf --connect-timeout 5 "$DB_URL" 2>/dev/null)
 
 if [ -n "$LATEST_DB" ]; then
@@ -98,7 +98,7 @@ Check the following configuration items. If a command does not exist or cannot b
 Report scan results in the following format:
 
 ```markdown
-# OpenClaw Security Scan Results
+# AuditClaw Scan Results
 
 **Scan date**: YYYY-MM-DD HH:MM
 **Target version**: [detected version]

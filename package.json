@@ -1,5 +1,5 @@
 {
-  "name": "openclaw-security",
+  "name": "auditclaw",
   "version": "0.1.0",
   "type": "module",
   "description": "Security verification and knowledge base repository for OpenClaw",

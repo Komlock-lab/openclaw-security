@@ -17,21 +17,21 @@ OpenClawに組み込めるセキュリティ自己診断スキルです。「セ
 
 ```bash
 # このリポジトリをクローン
-git clone https://github.com/natsuki/openclaw-security.git
+git clone https://github.com/natsuki/auditclaw.git
 
 # スキルディレクトリをOpenClawのスキルフォルダにコピー
-cp -r openclaw-security/skill-dist/openclaw-security-scan /path/to/openclaw/skills/
+cp -r auditclaw/skill-dist/auditclaw-scan /path/to/openclaw/skills/
 ```
 
 ### 方法2: 直接ダウンロード
 
 ```bash
 # スキルファイルを直接ダウンロード
-mkdir -p skills/openclaw-security-scan
-curl -sL https://raw.githubusercontent.com/natsuki/openclaw-security/main/skill-dist/openclaw-security-scan/SKILL.md -o skills/openclaw-security-scan/SKILL.md
-curl -sL https://raw.githubusercontent.com/natsuki/openclaw-security/main/skill-dist/openclaw-security-scan/scan.sh -o skills/openclaw-security-scan/scan.sh
-curl -sL https://raw.githubusercontent.com/natsuki/openclaw-security/main/skill-dist/openclaw-security-scan/vulnerability-db.json -o skills/openclaw-security-scan/vulnerability-db.json
-chmod +x skills/openclaw-security-scan/scan.sh
+mkdir -p skills/auditclaw-scan
+curl -sL https://raw.githubusercontent.com/natsuki/auditclaw/main/skill-dist/auditclaw-scan/SKILL.md -o skills/auditclaw-scan/SKILL.md
+curl -sL https://raw.githubusercontent.com/natsuki/auditclaw/main/skill-dist/auditclaw-scan/scan.sh -o skills/auditclaw-scan/scan.sh
+curl -sL https://raw.githubusercontent.com/natsuki/auditclaw/main/skill-dist/auditclaw-scan/vulnerability-db.json -o skills/auditclaw-scan/vulnerability-db.json
+chmod +x skills/auditclaw-scan/scan.sh
 ```
 
 ## 使い方
@@ -101,7 +101,7 @@ graph TD
 
 ## 脆弱性DBの更新
 
-脆弱性データベースは [openclaw-security リポジトリ](https://github.com/natsuki/openclaw-security) で管理されています。スキャン実行時にGitHubから最新版を自動取得しますが、ネットワーク不可時は同梱版が使用されます。
+脆弱性データベースは [auditclaw リポジトリ](https://github.com/natsuki/auditclaw) で管理されています。スキャン実行時にGitHubから最新版を自動取得しますが、ネットワーク不可時は同梱版が使用されます。
 
 DB更新のタイミング:
 - OpenClawの新しいセキュリティアドバイザリ公開時
