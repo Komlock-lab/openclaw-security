@@ -1,28 +1,8 @@
 # Summary
 
-* [はじめに - OpenClawを安全に使うために](README.md)
+This documentation is available in multiple languages:
 
-## 調べる - 脆弱性事例
+* [English](en/README.md)
+* [日本語](ja/README.md)
 
-* [概要](vulnerabilities/README.md)
-* [プロンプトインジェクション](vulnerabilities/prompt-injection.md)
-* [サンドボックスエスケープ](vulnerabilities/sandbox-escape.md)
-* [依存関係の脆弱性](vulnerabilities/dependency.md)
-* [認証バイパス](vulnerabilities/auth-bypass.md)
-* [データ漏洩](vulnerabilities/data-leakage.md)
-
-## 調べる - アップデート情報
-
-* [概要](updates/README.md)
-
-## 守る - ベストプラクティス
-
-* [概要](best-practices/README.md)
-
-## 試す - テストケース
-
-* [概要](test-cases/README.md)
-
-## レポート
-
-* [概要](reports/README.md)
+See [LANGS.md](LANGS.md) for the full language list.

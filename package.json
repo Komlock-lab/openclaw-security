@@ -2,7 +2,7 @@
   "name": "openclaw-security",
   "version": "0.1.0",
   "type": "module",
-  "description": "OpenClawのセキュリティ検証・ナレッジ蓄積リポジトリ",
+  "description": "Security verification and knowledge base repository for OpenClaw",
   "scripts": {},
   "dependencies": {}
 }
