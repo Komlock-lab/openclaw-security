@@ -117,3 +117,5 @@ DB update triggers:
 | ClawSec | Partial (feed) | No | No |
 
 The unique value of this skill is providing **version-specific vulnerability checking with full GHSA/CVE mapping** in a skill format.
+
+For a detailed coverage matrix including `openclaw doctor`, `openclaw security audit`, and this project, see the [Tool Comparison](../comparison.md) page.

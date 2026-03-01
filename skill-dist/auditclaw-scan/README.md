@@ -121,6 +121,8 @@ DB update triggers:
 
 The unique value of this skill is providing **version-specific vulnerability checking with full GHSA/CVE mapping** in a skill format.
 
+For a detailed coverage matrix, see [Tool Comparison — Built-in vs This Project](../../docs/en/comparison.md).
+
 ## License
 
 MIT
