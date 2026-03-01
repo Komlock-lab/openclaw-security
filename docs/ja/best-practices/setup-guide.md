@@ -148,3 +148,4 @@ openclaw config set sandbox all
 - [ ] `openclaw config get autoUpdate` が `true` を返す
 - [ ] 機密ファイルがOpenClawワークスペースの外にある
 - [ ] `curl -sL .../scan.sh | bash` を実行してCritical 0件を確認
+- [ ] [プロンプトインジェクション テストガイド](../test-cases/prompt-injection-guide.md)を実行して攻撃に対する防御を検証

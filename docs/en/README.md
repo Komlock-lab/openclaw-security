@@ -60,11 +60,12 @@ graph LR
 
 ## Current Progress
 
-### Completed Research
-- Prompt Injection: 8 major cases + OpenClaw status analysis
+### Completed
+- Prompt Injection research: 8 major cases + OpenClaw status analysis
 - OpenClaw official security posture: 160+ advisory analysis
+- **Prompt Injection Testing Guide**: [27 attack tests](test-cases/prompt-injection-guide.md) (beginner to advanced)
+- **AuditClaw Scan**: [Security self-scan skill](skill/README.md) with PI Risk Assessment
 
 ### Next Steps
 - Sandbox escape case research
 - Best practice compilation based on OWASP Top 10 for LLM
-- Prompt injection test case creation

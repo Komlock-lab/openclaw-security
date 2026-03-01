@@ -96,6 +96,20 @@ A supply chain attack that embeds invisible injections in AI agent skill files u
 | **P2** | Sensitive information masking in LLM output |
 | **P2** | Audit logging for all tool invocations |
 
+## Test Your Defense
+
+Want to verify how your OpenClaw instance holds up against these attacks? The testing guide covers 27 practical tests — from basic "ignore previous instructions" to advanced supply chain and side-channel attacks.
+
+**[Prompt Injection Testing Guide (27 tests)](../test-cases/prompt-injection-guide.md)**
+
+You can also run the automated risk assessment:
+
+```bash
+bash scan.sh
+```
+
+The scan report includes a **Prompt Injection Risk Assessment** section (RC-007 through RC-012) that checks your configuration for PI exposure.
+
 ## References
 
 - [OWASP LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)

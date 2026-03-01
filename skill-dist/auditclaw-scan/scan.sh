@@ -150,15 +150,36 @@ if (total > 0) {
   }
 }
 
-// Runtime configuration checks
+// Runtime configuration checks — split into Infrastructure and PI Risk
+const infraChecks = db.runtimeChecks.filter(rc => {
+  const num = parseInt(rc.id.replace('RC-', ''), 10);
+  return num <= 6;
+});
+const piChecks = db.runtimeChecks.filter(rc => {
+  const num = parseInt(rc.id.replace('RC-', ''), 10);
+  return num >= 7;
+});
+
 lines.push('');
 lines.push('## Runtime Configuration Checks');
 lines.push('');
 lines.push('Verify the following settings (check with \`openclaw config get\`):');
+
+lines.push('');
+lines.push('### Infrastructure');
 lines.push('');
 lines.push('| ID | Item | Severity | Recommendation |');
 lines.push('|----|------|----------|----------------|');
-for (const rc of db.runtimeChecks) {
+for (const rc of infraChecks) {
+  lines.push('| ' + rc.id + ' | ' + rc.description + ' | ' + rc.severity + ' | \`' + rc.recommendation + '\` |');
+}
+
+lines.push('');
+lines.push('### Prompt Injection Risk Assessment');
+lines.push('');
+lines.push('| ID | Item | Severity | Recommendation |');
+lines.push('|----|------|----------|----------------|');
+for (const rc of piChecks) {
   lines.push('| ' + rc.id + ' | ' + rc.description + ' | ' + rc.severity + ' | \`' + rc.recommendation + '\` |');
 }
 

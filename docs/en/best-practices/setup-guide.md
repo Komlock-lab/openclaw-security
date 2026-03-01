@@ -150,3 +150,4 @@ After setup, verify your security posture:
 - [ ] `openclaw config get autoUpdate` returns `true`
 - [ ] Sensitive files are outside the OpenClaw workspace directory
 - [ ] Run `curl -sL .../scan.sh | bash` and confirm 0 Critical findings
+- [ ] Run the [Prompt Injection Testing Guide](../test-cases/prompt-injection-guide.md) to verify your defense against active attacks

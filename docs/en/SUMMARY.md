@@ -23,10 +23,12 @@
 ## Test - Test Cases
 
 * [Overview](test-cases/README.md)
+* [Prompt Injection Testing Guide](test-cases/prompt-injection-guide.md)
 
 ## Skills
 
 * [Security Self-Scan](skill/README.md)
+* [Tool Comparison — Built-in vs This Project](comparison.md)
 
 ## Reports
 

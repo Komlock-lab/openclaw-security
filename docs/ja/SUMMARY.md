@@ -23,10 +23,12 @@
 ## 試す - テストケース
 
 * [概要](test-cases/README.md)
+* [プロンプトインジェクション テストガイド](test-cases/prompt-injection-guide.md)
 
 ## スキル
 
 * [セキュリティセルフスキャン](skill/README.md)
+* [ツール比較 — 標準コマンド vs このプロジェクト](comparison.md)
 
 ## レポート
 
