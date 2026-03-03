@@ -10,6 +10,7 @@
 * [依存関係の脆弱性](vulnerabilities/dependency.md)
 * [認証バイパス](vulnerabilities/auth-bypass.md)
 * [データ漏洩](vulnerabilities/data-leakage.md)
+* [CI/CDサプライチェーン](vulnerabilities/cicd-supply-chain.md)
 
 ## 調べる - アップデート情報
 

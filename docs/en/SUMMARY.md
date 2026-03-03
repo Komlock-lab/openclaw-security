@@ -10,6 +10,7 @@
 * [Dependency Vulnerabilities](vulnerabilities/dependency.md)
 * [Authentication Bypass](vulnerabilities/auth-bypass.md)
 * [Data Leakage](vulnerabilities/data-leakage.md)
+* [CI/CD Supply Chain](vulnerabilities/cicd-supply-chain.md)
 
 ## Research - Update Information
 

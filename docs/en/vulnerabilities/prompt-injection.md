@@ -1,6 +1,6 @@
 # Prompt Injection
 
-> Last updated: 2026-02-27
+> Last updated: 2026-03-03
 
 ## Overview
 
@@ -67,6 +67,23 @@ A PoC AI virus that self-propagates across multiple coding agents. Injects infec
 
 A supply chain attack that embeds invisible injections in AI agent skill files using Unicode tags. Undetectable by human review.
 
+### hackerbot-claw GitHub Actions Campaign (2026)
+
+An AI-powered bot ("hackerbot-claw", claiming to use claude-opus-4-5) autonomously attacked GitHub Actions workflows across 7 repositories over 8 days (Feb 21-28, 2026). **5 of 7 targets were compromised**, including aquasecurity/trivy (full repository takeover) and avelino/awesome-go (RCE + token theft).
+
+The campaign used 5 distinct techniques:
+1. **Pwn Request** (`pull_request_target` + untrusted checkout) — awesome-go, trivy
+2. **Direct script injection** — project-akri/akri (CNCF)
+3. **Branch name injection** (bash `${{ }}` expansion) — microsoft/ai-discovery-agent, RustPython
+4. **Filename injection** (Base64 encoded) — DataDog/datadog-iac-scanner
+5. **CLAUDE.md poisoning** (AI prompt injection) — ambient-code/platform
+
+**Key finding**: Attack 5 replaced CLAUDE.md with malicious instructions to hijack the AI code reviewer. Claude sonnet 4.6 detected and refused both injection attempts. This is the first documented agent-vs-agent attack in the wild.
+
+**OpenClaw relevance**: OpenClaw uses CLAUDE.md as trusted context, making it vulnerable to the same CLAUDE.md poisoning pattern. See [CI/CD Supply Chain Attacks](cicd-supply-chain.md) for full analysis and defense checklist.
+
+- **Source**: [StepSecurity Blog](https://www.stepsecurity.io/blog/hackerbot-claw-github-actions-exploitation)
+
 ## OpenClaw Status (as of 2026-02-27)
 
 ### Official Stance
@@ -98,9 +115,9 @@ A supply chain attack that embeds invisible injections in AI agent skill files u
 
 ## Test Your Defense
 
-Want to verify how your OpenClaw instance holds up against these attacks? The testing guide covers 27 practical tests — from basic "ignore previous instructions" to advanced supply chain and side-channel attacks.
+Want to verify how your OpenClaw instance holds up against these attacks? The testing guide covers 29 practical tests — from basic "ignore previous instructions" to advanced supply chain and side-channel attacks.
 
-**[Prompt Injection Testing Guide (27 tests)](../test-cases/prompt-injection-guide.md)**
+**[Prompt Injection Testing Guide (29 tests)](../test-cases/prompt-injection-guide.md)**
 
 You can also run the automated risk assessment:
 

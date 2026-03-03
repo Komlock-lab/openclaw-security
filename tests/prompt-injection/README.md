@@ -6,9 +6,10 @@ Attack test cases for prompt injection vulnerabilities in OpenClaw.
 
 Prompt injection is the most fundamental and unresolved threat to LLM-based agents. Unlike traditional software vulnerabilities that can be patched, prompt injection exploits the inherent nature of how language models process instructions mixed with data.
 
-This test suite covers two dimensions:
+This test suite covers three dimensions:
 - **Part 1 (Tests 1-11)**: Attack **vectors** — where injections enter the system
 - **Part 2 (Tests 12-27)**: Attack **techniques** — how the model is tricked
+- **Part 3 (Tests 28-29)**: **CI/CD & multi-agent** — supply chain and agent-vs-agent attacks
 
 ## Test Index
 
@@ -48,6 +49,8 @@ This test suite covers two dimensions:
 | 25 | Conversation History Spoofing | Intermediate | Context Manipulation | [Guide](../../docs/en/test-cases/prompt-injection-guide.md#test-25-conversation-history-spoofing-intermediate) |
 | 26 | Agreement Priming / Yes-Ladder | Intermediate | Social Engineering | [Guide](../../docs/en/test-cases/prompt-injection-guide.md#test-26-agreement-priming--yes-ladder-intermediate) |
 | 27 | Few-Shot Example Manipulation | Intermediate | Context Manipulation | [Guide](../../docs/en/test-cases/prompt-injection-guide.md#test-27-few-shot-example-manipulation-intermediate) |
+| 28 | CLAUDE.md Poisoning via Untrusted PR | Advanced | CI/CD Supply Chain | [Guide](../../docs/en/test-cases/prompt-injection-guide.md#test-28-claudemd-poisoning-via-untrusted-pr-advanced) |
+| 29 | Agent-to-Agent Prompt Injection | Advanced | Agent-vs-Agent | [Guide](../../docs/en/test-cases/prompt-injection-guide.md#test-29-agent-to-agent-prompt-injection-advanced) |
 
 ## Test Coverage Matrix
 
@@ -61,6 +64,8 @@ This test suite covers two dimensions:
 | Social Engineering | 22, 26 | 2 |
 | Output Manipulation | 23, 24 | 2 |
 | Context Manipulation | 25, 27 | 2 |
+| CI/CD Supply Chain | 28 | 1 |
+| Agent-vs-Agent | 29 | 1 |
 
 ## Related Resources
 

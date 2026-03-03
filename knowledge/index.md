@@ -9,6 +9,7 @@ OpenClawセキュリティに関する調査結果の一覧です。
 | 2026-02-27 | プロンプトインジェクション脆弱性 総合調査 | prompt-injection | Critical | `vulnerabilities/prompt-injection/2026-02-27-prompt-injection-survey.md` |
 | 2026-02-27 | OpenClaw PI対策の現状 | prompt-injection | High | `vulnerabilities/prompt-injection/2026-02-27-openclaw-pi-status.md` |
 | 2026-03-01 | PI攻撃テクニック分類（20件の新規テクニック） | prompt-injection | Critical | `vulnerabilities/prompt-injection/2026-03-01-pi-attack-techniques-taxonomy.md` |
+| 2026-03-03 | hackerbot-claw GHA攻撃キャンペーン（7ターゲット・5侵害） | prompt-injection, ci-cd | Critical | `vulnerabilities/prompt-injection/2026-03-03-hackerbot-claw-gha-campaign.md` |
 
 ## アップデート情報
 
