@@ -10,6 +10,10 @@ OpenClawセキュリティに関する調査結果の一覧です。
 | 2026-02-27 | OpenClaw PI対策の現状 | prompt-injection | High | `vulnerabilities/prompt-injection/2026-02-27-openclaw-pi-status.md` |
 | 2026-03-01 | PI攻撃テクニック分類（20件の新規テクニック） | prompt-injection | Critical | `vulnerabilities/prompt-injection/2026-03-01-pi-attack-techniques-taxonomy.md` |
 | 2026-03-03 | hackerbot-claw GHA攻撃キャンペーン（7ターゲット・5侵害） | prompt-injection, ci-cd | Critical | `vulnerabilities/prompt-injection/2026-03-03-hackerbot-claw-gha-campaign.md` |
+| 2026-03-12 | system.run / exec allowlist バイパス手法の体系的分類（28件+） | exec-bypass | Critical | `vulnerabilities/exec-bypass/2026-03-12-system-run-attack-surface.md` |
+| 2026-03-12 | TOCTOU攻撃によるサンドボックスバイパス（6件） | sandbox-escape | Critical | `vulnerabilities/sandbox-escape/2026-03-12-toctou-sandbox-bypass.md` |
+| 2026-03-12 | ACP sessions_spawn サンドボックス継承不備（4件） | sandbox-escape | High | `vulnerabilities/sandbox-escape/2026-03-12-acp-sandbox-inheritance.md` |
+| 2026-03-12 | チャンネル別認証バイパスの体系的分類（25件+） | auth-bypass | High | `vulnerabilities/auth-bypass/2026-03-12-channel-auth-bypass-patterns.md` |
 
 ## アップデート情報
 
@@ -29,7 +33,7 @@ OpenClawセキュリティに関する調査結果の一覧です。
 
 | 日付 | タイトル | トピック | パス |
 |------|---------|---------|------|
-| - | まだ調査結果がありません | - | - |
+| 2026-03-12 | OWASP LLM Top 10 と AuditClaw のカバレッジマッピング | OWASP, LLM-Top-10 | `best-practices/2026-03-12-owasp-llm-top10-mapping.md` |
 
 ---
 

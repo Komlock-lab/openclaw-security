@@ -258,11 +258,11 @@ Phase 5: tests/{category}/ に保存
 
 #### Critical（即時）
 
-- [ ] `knowledge/vulnerabilities/exec-bypass/2026-03-11-system-run-attack-surface.md`
+- [x] `knowledge/vulnerabilities/exec-bypass/2026-03-12-system-run-attack-surface.md`
   - system.run / exec allowlist バイパス手法の体系的分類（累計28件以上）
   - 攻撃カテゴリ: 承認バインディング不備、ラッパー深度スキップ、PowerShellエンコード、env override、PATHトークン差し替え、allow-always永続化
   - 対応する全GHSAのマッピング
-- [ ] `knowledge/vulnerabilities/sandbox-escape/2026-03-11-toctou-sandbox-bypass.md`
+- [x] `knowledge/vulnerabilities/sandbox-escape/2026-03-12-toctou-sandbox-bypass.md`
   - TOCTOU (Time-of-Check to Time-of-Use) による新しいサンドボックスバイパスパターン
   - シンボリックリンクレース（GHSA-7xmq, GHSA-x82f）
   - ZIP展開レース（GHSA-r54r）
@@ -270,14 +270,14 @@ Phase 5: tests/{category}/ に保存
 
 #### High（1週間以内）
 
-- [ ] `knowledge/vulnerabilities/sandbox-escape/2026-03-11-acp-sandbox-inheritance.md`
+- [x] `knowledge/vulnerabilities/sandbox-escape/2026-03-12-acp-sandbox-inheritance.md`
   - ACP sessions_spawn のサンドボックス継承不備
   - マルチエージェント環境における新たな攻撃面
   - GHSA-474h, GHSA-p7gr, GHSA-9q36 の分析
-- [ ] `knowledge/vulnerabilities/auth-bypass/2026-03-11-channel-auth-bypass-patterns.md`
+- [x] `knowledge/vulnerabilities/auth-bypass/2026-03-12-channel-auth-bypass-patterns.md`
   - チャンネル別認証バイパスの体系化
   - MS Teams, Discord, Slack, browser control等の共通パターン
-- [ ] `knowledge/best-practices/2026-03-11-owasp-llm-top10-mapping.md`
+- [x] `knowledge/best-practices/2026-03-12-owasp-llm-top10-mapping.md`
   - OWASP LLM Top 10 (2025版) と AuditClaw のカバレッジマッピング
   - 各項目の対応状況と推奨アクション
 
