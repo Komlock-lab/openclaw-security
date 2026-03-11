@@ -28,8 +28,8 @@ curl -sL https://raw.githubusercontent.com/natsuki/auditclaw/main/skill-dist/aud
 ```
 
 **What it checks:**
-- 30+ known GHSA/CVE vulnerabilities mapped by version (CalVer)
-- 6 runtime configuration items (sandbox, Gateway auth, exec allowlist, etc.)
+- 65+ known GHSA/CVE vulnerabilities mapped by version (CalVer)
+- 19 runtime configuration items (sandbox, Gateway auth, exec allowlist, ACP dispatch, etc.)
 - Permanent warnings (prompt injection, DM pairing)
 
 ## 2. OpenClaw Skill
