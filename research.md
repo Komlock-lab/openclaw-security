@@ -1072,3 +1072,257 @@ v2026.2.25 と v2026.2.26 で合計32件:
 ---
 
 *セクション6 最終更新: 2026-02-28*
+
+---
+
+## 7. Deep Research: 最新セキュリティ状況と不足分析（2026-03-11）
+
+> 調査実施日: 2026-03-11
+> 調査方法: GitHub API (`gh`) による最新リリース・アドバイザリ取得 + プロジェクト内分析
+> 目的: DB (2026-03-03時点) と現在のギャップを特定し、更新計画を策定
+
+---
+
+### 7.1 OpenClaw 最新リリース状況
+
+#### DBの状態 vs 実際
+
+| 項目 | DB上の値 (2026-03-03) | 実際の最新値 (2026-03-11) | ギャップ |
+|------|----------------------|--------------------------|---------|
+| 最新バージョン | 2026.2.26 | **2026.3.8** | 4つの安定版リリースが未反映 |
+| 脆弱性エントリ数 | 30件 | **65件** (30 + 35新規) | 35件の新アドバイザリが未登録 |
+| ランタイムチェック | 14件 | 14件 | 新カテゴリの追加が必要 |
+
+#### 新規リリース一覧 (2026-02-27以降)
+
+| バージョン | リリース日 | セキュリティ修正数 | 主な変更 |
+|-----------|-----------|-------------------|---------|
+| v2026.3.1 | 2026-03-02 | High 4件, Medium 7件 | サンドボックス継承強化、system.run承認バインド、Gateway liveness/readiness対応 |
+| v2026.3.2 | 2026-03-03 | High 2件, Medium 11件 | ACP sandbox継承、DNS pinning修正、TOCTOU修正、SecretRef拡張(64ターゲット) |
+| v2026.3.7 | 2026-03-08 | High 2件, Medium 10件 | Gateway auth漏洩修正、fetch-guard修正、system.run強化多数、Context Engine Plugin |
+| v2026.3.8 | 2026-03-09 | Medium 3件 | skills-install-download修正、MS Teams allowlistバイパス修正、backup/verify機能 |
+
+#### BREAKING CHANGES (v2026.3.2)
+
+1. **tools.profile デフォルト変更**: 新規インストール時 `messaging` がデフォルトに（広範なコーディング/システムツールは明示的設定が必要）
+2. **ACP dispatch デフォルト有効化**: `acp.dispatch.enabled=false` で明示的に無効化が必要
+3. **Plugin SDK HTTP ハンドラ変更**: `api.registerHttpHandler()` 廃止 → `api.registerHttpRoute()` へ
+4. **Zalo plugin ネイティブ化**: 外部CLIバイナリ依存を廃止
+
+#### 注目の新機能（セキュリティ関連）
+
+- **SecretRef拡張** (v2026.3.2): 64ターゲットのSecretRef対応、未解決refの即時失敗
+- **`openclaw config validate`** (v2026.3.2): 設定ファイルの事前検証コマンド追加
+- **`openclaw backup create/verify`** (v2026.3.8): ローカル状態のバックアップと検証
+- **Plugins `hooks.allowPromptInjection`** (v2026.3.7): プラグインフックのプロンプトインジェクション制御設定
+- **Context Engine Plugin** (v2026.3.7): コンテキスト管理のプラグイン化（lossless-claw等の代替戦略を可能に）
+- **ACP Provenance** (v2026.3.8): ACP入力の出所メタデータ + セッショントレースID
+
+---
+
+### 7.2 新規セキュリティアドバイザリ (35件)
+
+#### High (8件)
+
+| GHSA ID | 修正バージョン | カテゴリ | 概要 |
+|---------|--------------|---------|------|
+| GHSA-rchv-x836-w7xp | >= 2026.3.7 | Secret Leakage | ダッシュボードがGateway認証情報をブラウザURL/クエリ/localStorageに漏洩 |
+| GHSA-6mgf-v5j7-45cr | >= 2026.3.7 | SSRF/Auth Bypass | fetch-guardがクロスオリジンリダイレクト時にカスタム認証ヘッダーを転送 |
+| GHSA-8mvx-p2r9-r375 | >= 2026.3.2 | SSRF | web toolsのURL厳格ガードがenvプロキシ設定時にDNSピンニングを喪失 |
+| GHSA-474h-prjg-mmw3 | >= 2026.3.2 | Sandbox Escape | sessions_spawn(runtime="acp")がサンドボックス継承をバイパスしホストACP初期化を許可 |
+| GHSA-jr6x-2q95-fh2g | >= 2026.3.1 | Authorization | write-scopeエージェント実行がowner-onlyツールに到達可能 |
+| GHSA-q399-23r3-hfx4 | >= 2026.3.1 | Exec Bypass | system.run承認がPATHトークン実行ファイルIDをバインドせず、承認後の実行ファイル差し替えが可能 |
+| GHSA-p7gr-f84w-hqg5 | >= 2026.3.1 | Sandbox Escape | sessions_spawnがクロスエージェントスポーン時のサンドボックス継承を未強制 |
+| GHSA-6f6j-wx9w-ff4j | >= 2026.3.1 | RCE | ACPX Windowsラッパーのシェルフォールバックが特定パスでcwdインジェクションを許可 |
+
+#### Medium (27件)
+
+| GHSA ID | 修正バージョン | カテゴリ | 概要 |
+|---------|--------------|---------|------|
+| GHSA-vhwf-4x96-vqx2 | >= 2026.3.8 | Path Traversal | skills-install-downloadがベースパス再バインドでツールルート外にリダイレクト可能 |
+| GHSA-g7cr-9h7q-4qxq | >= 2026.3.8 | Auth Bypass | MS Teams送信者allowlistバイパス（ルートallowlist設定時+空送信者allowlist） |
+| GHSA-8g75-q649-6pv6 | >= 2026.3.8 | Exec Bypass | system.run承認が可変スクリプトオペランドを承認/実行間でバインドせず |
+| GHSA-6rmx-gvvg-vh6j | >= 2026.3.7 | DoS | hookが非POSTリクエストを認証ロックアウトカウントに加算 |
+| GHSA-pjvx-rx66-r3fg | >= 2026.3.7 | Auth Bypass | /allowlist --storeのアカウントスコーピングでクロスアカウント送信者認可拡張 |
+| GHSA-hfpr-jhpq-x4rm | >= 2026.3.7 | Privilege Escalation | operator.write chat.sendが管理者専用config書き込みに到達可能 |
+| GHSA-j425-whc4-4jgc | >= 2026.3.7 | Exec Bypass | system.run env overrideフィルタリングが危険なヘルパーコマンドピボットを許可 |
+| GHSA-9q36-67vc-rrwg | >= 2026.3.7 | Sandbox Escape | サンドボックス化された/acpスポーンリクエストがホストACPセッションを初期化可能 |
+| GHSA-9q2p-vc84-2rwm | >= 2026.3.7 | Exec Bypass | system.run allow-always永続化がシェルコメントペイロード末尾を含む |
+| GHSA-r6qf-8968-wj9q | >= 2026.3.7 | Exec Bypass | system.runラッパー深度境界がシェル承認ゲーティングをスキップ可能 |
+| GHSA-3h2q-j2v4-6w5r | >= 2026.3.7 | Exec Bypass | system.run allowlist承認パースがPowerShellエンコードコマンドラッパーを見逃し |
+| GHSA-wpg9-4g4v-f9rc | >= 2026.3.2 | Auth Bypass | Discord音声トランスクリプトのオーナーフラグ欠落でowner-onlyツールが露出 |
+| GHSA-2858-xg23-26fp | >= 2026.3.2 | SSRF | Nodeカメラ URLペイロードのホストバインディングバイパスでgateway fetchピボット |
+| GHSA-r54r-wmmq-mh84 | >= 2026.3.2 | Path Traversal | ZIP展開レースで親シンボリックリンク再バインドにより宛先外書き込み |
+| GHSA-cfvj-7rx7-fc7c | >= 2026.3.2 | Path Traversal | stageSandboxMediaのシンボリックリンクトラバーサルでサンドボックス外ファイル上書き |
+| GHSA-v865-p3gq-hw6m | >= 2026.3.2 | Auth Bypass | プラグイン/api/channelsルート分類のエンコードパス認証バイパス |
+| GHSA-h3rm-6x7g-882f | >= 2026.3.2 | Exec Bypass | Node system.run承認ハードニングラッパーのセマンティックドリフトで意図しないスクリプト実行 |
+| GHSA-3pxq-f3cp-jmxp | >= 2026.3.2 | Path Traversal | ブラウザ出力と関連パス境界フローの統一ルートバインド書き込みハードニング |
+| GHSA-x4vp-4235-65hg | >= 2026.3.2 | DoS | 事前認証webhookボディパースで認証なし低速リクエストDoS |
+| GHSA-77hf-7fqf-f227 | >= 2026.3.2 | DoS | skills-install-download: tar.bz2展開がアーカイブ安全性パリティチェックをバイパス（ローカルDoS） |
+| GHSA-vpj2-69hf-rppw | >= 2026.3.1 | Auth Bypass | ブラウザコントロール起動が認証ブートストラップ失敗後も認証なしで継続可能 |
+| GHSA-wr6m-jg37-68xh | >= 2026.3.1 | DoS | Zalo webhookのクエリストリングキーチャーンによる認証なしメモリ増大DoS |
+| GHSA-392f-ggf5-fp3c | >= 2026.3.1 | Policy Bypass | Nodeメタデータポリシー分類のUnicode正規化ドリフトでノードallowlist拡大 |
+| GHSA-7xmq-g46g-f8pv | >= 2026.3.1 | Sandbox Escape | サンドボックスメディアTOCTOUでサンドボックスルート外ファイル読み取り |
+| GHSA-x82f-27x3-q89c | >= 2026.3.1 | Sandbox Escape | writeFileWithinRootのTOCTOUシンボリックリンクレースでルート境界外ファイル作成/切り詰め |
+| GHSA-8m9v-xpgf-g99m | >= 2026.3.1 | Auth Bypass | stopトリガーと/modelsコマンド認可での認証なし送信者バイパス |
+| GHSA-g99v-8hwm-g76g | >= 2026.3.1 | SSRF | web_search引用リダイレクトSSRF（プライベートネットワーク許可ポリシー経由） |
+
+---
+
+### 7.3 新アドバイザリのカテゴリ分析
+
+#### 攻撃カテゴリ別分布 (35件)
+
+| カテゴリ | 件数 | 深刻度内訳 |
+|---------|------|-----------|
+| Exec Allowlist Bypass / system.run | 8件 | High 1, Medium 7 |
+| Sandbox Escape (TOCTOU, ACP継承) | 5件 | High 2, Medium 3 |
+| Auth Bypass (チャンネル/プラグイン) | 5件 | Medium 5 |
+| Path Traversal (シンボリックリンク, ZIP) | 4件 | Medium 4 |
+| SSRF (DNS pinning, リダイレクト) | 3件 | High 1, Medium 2 |
+| DoS (webhook, メモリ, tar) | 3件 | Medium 3 |
+| Secret Leakage (Gateway auth) | 1件 | High 1 |
+| RCE (ACPX cwd injection) | 1件 | High 1 |
+| Authorization / Privilege Escalation | 2件 | High 1, Medium 1 |
+| Policy Bypass (Unicode正規化) | 1件 | Medium 1 |
+| Skill Supply Chain | 1件 | Medium 1 |
+
+#### 新たなトレンド（既存DBになかった攻撃パターン）
+
+1. **TOCTOU (Time-of-Check to Time-of-Use)**: v2026.3.1で3件。シンボリックリンクレースを使ったサンドボックスバイパスの新パターン
+2. **system.run 承認バイパスの連鎖**: 8件がsystem.run関連。承認バインディング、ラッパー深度、PowerShellエンコード、env override等の多角的攻撃面
+3. **ACP サンドボックス継承不備**: sessions_spawnでの継承バイパスが2件。マルチエージェント環境の新攻撃面
+4. **DNS pinning喪失**: プロキシ設定時にURL厳格ガードのDNSピンニングが無効化
+5. **Gateway認証情報のUI漏洩**: ダッシュボードUIからブラウザURL/localStorage経由の認証情報漏洩（フロントエンドセキュリティの問題）
+6. **DoS攻撃面の出現**: webhook DoS、メモリ増大DoS、tar展開DoSの3件。可用性への新たな脅威
+
+---
+
+### 7.4 プロジェクトの不足分析
+
+#### 7.4.1 テストカバレッジ
+
+| 攻撃カテゴリ | 既存テスト | vuln-db対応件数 | 新アドバイザリ関連 | ステータス |
+|-------------|-----------|----------------|------------------|----------|
+| prompt-injection | 29件 | 2件 | 0件 | 充実 |
+| sandbox-escape | **0件** | 4件 | 5件 | **Critical: 完全欠如** |
+| skill-abuse | **0件** | 2件 | 9件 (exec bypass+skill) | **Critical: 完全欠如** |
+| channel-spoofing | **0件** | 7件 | 5件 | **Critical: 完全欠如** |
+| secret-leakage | **0件** | 4件 | 5件 (path+secret) | **Critical: 完全欠如** |
+| agent-hijack | **0件** | 11件 | 4件 (RCE+authz+ACP) | **Critical: 完全欠如** |
+
+#### 7.4.2 ナレッジベース
+
+| トピック | 記事数 | 不足レベル |
+|---------|-------|-----------|
+| プロンプトインジェクション | 4件 | 充実 |
+| sandbox-escape / TOCTOU | 0件 | **完全欠如** |
+| system.run / exec bypass | 0件 | **完全欠如** (累計28+件の攻撃パターン) |
+| ACP セキュリティ | 0件 | **完全欠如** (新たな攻撃面) |
+| RCE / Command Injection | 0件 | **完全欠如** |
+| Authentication Bypass | 0件 | **完全欠如** |
+| ベストプラクティス | 0件 | **完全欠如** |
+| OWASP LLM Top 10 対応 | 0件 | **完全欠如** |
+
+#### 7.4.3 ドキュメント (docs/)
+
+| セクション | 既存ページ | 不足ページ |
+|-----------|-----------|-----------|
+| vulnerabilities/ | 6トピック | RCE, Command Injection, SSRF, Path Traversal, CSRF, Exec Bypass, Policy Bypass, TOCTOU, ACP Security |
+| best-practices/ | setup-guideのみ | ハードニングガイド, 運用監視, IR手順, チャンネル別設定, スキル審査, CI/CDチェックリスト |
+| test-cases/ | PI guideのみ | sandbox-escape, skill-abuse, channel-spoofing, secret-leakage, agent-hijack の5ガイド |
+| updates/ | READMEのみ | v2026.3.x系の変更点, BREAKING CHANGES ガイド |
+
+#### 7.4.4 vulnerability-db.json の更新必要項目
+
+1. **35件の新アドバイザリ追加** (metadata.entryCount: 30 → 65)
+2. **latestOpenClawVersion 更新**: 2026.2.26 → 2026.3.8
+3. **lastUpdated 更新**: 2026-03-03 → 2026-03-11
+4. **新カテゴリ追加**: TOCTOU, ACP Sandbox Bypass, DoS, Privilege Escalation
+5. **新ランタイムチェック追加案**:
+   - RC-015: ACP dispatch設定の安全性チェック
+   - RC-016: system.run承認バインディングの堅牢性確認
+   - RC-017: DNS pinning設定の有効性確認（プロキシ環境）
+   - RC-018: Gateway認証情報のUI漏洩チェック（localStorage/URL）
+   - RC-019: sessions_spawnサンドボックス継承確認
+
+---
+
+### 7.5 OWASP LLM Top 10 (2025版) との対応
+
+| # | OWASP LLM Risk | AuditClawでの対応状況 |
+|---|---------------|---------------------|
+| LLM01 | Prompt Injection | テスト29件あり。ナレッジ4記事 |
+| LLM02 | Insecure Output Handling | **未対応** - exec bypass関連で部分的にカバー可能 |
+| LLM03 | Training Data Poisoning | 対象外（OpenClawはファインチューニングしない） |
+| LLM04 | Model Denial of Service | **未対応** - 新規DoSアドバイザリ3件と関連 |
+| LLM05 | Supply Chain Vulnerabilities | テスト28-29で部分カバー。スキルサプライチェーンの深掘り必要 |
+| LLM06 | Sensitive Information Disclosure | **未対応** - secret-leakageカテゴリで対応必要 |
+| LLM07 | Insecure Plugin Design | **未対応** - skill-abuseカテゴリで対応必要 |
+| LLM08 | Excessive Agency | テストで部分カバー。system.run承認強化との関連 |
+| LLM09 | Overreliance | 対象外（利用者側の問題） |
+| LLM10 | Model Theft | 対象外（OpenClawはモデルをホストしない） |
+
+---
+
+### 7.6 優先度付きアクションプラン
+
+#### Phase 1: Critical (即時対応)
+
+- [ ] **vulnerability-db.json に35件の新アドバイザリを追加**
+  - latestOpenClawVersion → 2026.3.8
+  - 新カテゴリの整理と登録
+- [ ] **system.run / exec bypass ナレッジ記事作成**
+  - 既存DB20件 + 新規8件 = 計28件のパターンを体系化（最も活発な攻撃面）
+- [ ] **TOCTOU攻撃パターン ナレッジ記事作成**
+  - シンボリックリンクレースによるサンドボックスバイパスの新パターン
+
+#### Phase 2: High (1週間以内)
+
+- [ ] **sandbox-escape テストスイート作成** (12件のテストケース案)
+  - TOCTOU, シンボリックリンク, ACP継承バイパス
+- [ ] **agent-hijack テストスイート作成** (12件のテストケース案)
+  - RCE, コマンドインジェクション, 権限昇格
+- [ ] **ACP セキュリティ ナレッジ記事作成**
+  - sessions_spawn継承問題, ACPXラッパー脆弱性, ACP Provenance
+- [ ] **新ランタイムチェック5件追加** (RC-015 ~ RC-019)
+
+#### Phase 3: Medium (2週間以内)
+
+- [ ] **channel-spoofing テストスイート作成** (12件)
+- [ ] **secret-leakage テストスイート作成** (10件)
+- [ ] **skill-abuse テストスイート作成** (10件)
+- [ ] **ベストプラクティス ナレッジ・ドキュメント整備**
+  - OWASP LLM Top 10 対応マッピング
+  - ハードニングガイド, 運用監視ガイド
+- [ ] **docsの脆弱性ページ拡充** (9カテゴリ)
+
+#### Phase 4: Low (1ヶ月以内)
+
+- [ ] **バージョンマップ更新** (v2026.3.x系追加)
+- [ ] **BREAKING CHANGES ガイド作成**
+- [ ] **5カテゴリのテストガイドドキュメント作成**
+- [ ] **レポートテンプレートの実例作成**
+
+---
+
+### 7.7 主要な発見・インサイト
+
+#### system.run が最大の攻撃面
+v2026.2.x + v2026.3.x系で修正された脆弱性のうち **累計28件以上がsystem.run/exec関連**。承認メカニズムの複数の弱点が継続的に発見・修正されている。OpenClawにおける最も活発で深刻な攻撃面であり、専用のナレッジ記事とテストスイートが急務。
+
+#### サンドボックスバイパスの進化
+従来のシンボリックリンク/ハードリンクに加え、**TOCTOU（レースコンディション）** と **ACP sessions_spawn継承バイパス** という新パターンが出現。特にマルチエージェント環境でのサンドボックス境界の問題は今後も拡大する可能性が高い。
+
+#### Gateway認証情報のUI漏洩は新カテゴリ
+GHSA-rchv-x836-w7xpはブラウザUIからの認証情報漏洩で、従来のサーバーサイド脆弱性とは異なるフロントエンドセキュリティの問題。クライアントサイドのセキュリティチェック(RC-018)の必要性を示唆。
+
+#### DoS攻撃面の拡大
+3件のDoS脆弱性（webhook DoS, メモリ増大DoS, tar展開DoS）が新たに登場。従来のDBには含まれていなかったカテゴリであり、可用性への脅威も追跡が必要。
+
+#### v2026.3.x系はセキュリティ強化リリース
+4つの安定版リリースで35件のセキュリティ修正が含まれている。特にv2026.3.1-3.2は「Fifth Wave」と呼べる集中修正で、サンドボックス継承とsystem.run承認の根本的な強化が行われた。
+
+---
+
+*セクション7 最終更新: 2026-03-11*
