@@ -300,21 +300,21 @@ Phase 5: tests/{category}/ に保存
 
 #### Medium（2週間以内）
 
-- [ ] **skill-abuse テストスイート** (10件)
-  - `tests/skill-abuse/README.md` 作成
-  - exec allowlist バイパス系 (4件): GNU long option, env -S, PowerShell encoded, wrapper depth
-  - スキルサプライチェーン系 (4件): Unicode隠蔽, SKILL.md改竄, 外部URL取得, 権限昇格チェーン
-  - 承認バインディング系 (2件): system.run ID mismatch, PATH token rebind
-- [ ] **channel-spoofing テストスイート** (12件)
-  - `tests/channel-spoofing/README.md` 作成
-  - webhook/token系 (3件): Telegram secret未検証, webhook署名偽装, Gateway認証なし接続
-  - 認証バイパス系 (5件): Canvas, browser bridge, Slack callback, voice-call allowlist, CSRF loopback
-  - allowlist/ポリシー系 (4件): DM brute-force, Node metadata spoofing, sender check skip, 入力サニタイズ
-- [ ] **secret-leakage テストスイート** (10件)
-  - `tests/secret-leakage/README.md` 作成
-  - ファイル読み取り系 (4件): browser upload path traversal, Zip Slip, $include directive, plugin install path traversal
-  - 情報漏洩系 (4件): 環境変数漏洩, ログ混入, API応答漏洩, Gateway UI localStorage漏洩
-  - サイドチャネル系 (2件): DNS exfiltration, 設定ファイル平文保存
+- [x] **skill-abuse テストスイート** (10件)
+  - [x] `tests/skill-abuse/README.md` 作成
+  - [ ] exec allowlist バイパス系 (4件): GNU long option, env -S, PowerShell encoded, wrapper depth
+  - [ ] スキルサプライチェーン系 (4件): Unicode隠蔽, SKILL.md改竄, 外部URL取得, 権限昇格チェーン
+  - [ ] 承認バインディング系 (2件): system.run ID mismatch, PATH token rebind
+- [x] **channel-spoofing テストスイート** (12件)
+  - [x] `tests/channel-spoofing/README.md` 作成
+  - [ ] webhook/token系 (3件): Telegram secret未検証, webhook署名偽装, Gateway認証なし接続
+  - [ ] 認証バイパス系 (5件): Canvas, browser bridge, Slack callback, voice-call allowlist, CSRF loopback
+  - [ ] allowlist/ポリシー系 (4件): DM brute-force, Node metadata spoofing, sender check skip, 入力サニタイズ
+- [x] **secret-leakage テストスイート** (10件)
+  - [x] `tests/secret-leakage/README.md` 作成
+  - [ ] ファイル読み取り系 (4件): browser upload path traversal, Zip Slip, $include directive, plugin install path traversal
+  - [ ] 情報漏洩系 (4件): 環境変数漏洩, ログ混入, API応答漏洩, Gateway UI localStorage漏洩
+  - [ ] サイドチャネル系 (2件): DNS exfiltration, 設定ファイル平文保存
 
 ### 6-4. ドキュメント拡充 [Medium]
 
