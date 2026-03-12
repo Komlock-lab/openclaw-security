@@ -4,3 +4,7 @@ node_modules/
 !.env.example
 .DS_Store
 *.log
+
+# Work-in-progress planning documents
+plan-tool.md
+research-tool.md
