@@ -10,12 +10,20 @@
  *   auditclaw --version
  */
 
+import { readFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { scanCommand, type ScanOptions } from "./commands/scan.js";
 import { checkCommand, type CheckOptions } from "./commands/check.js";
 import { reportCommand } from "./commands/report.js";
 import type { OutputFormat } from "./lib/formatter.js";
 
-const VERSION = "0.1.0";
+// Load version from package.json
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const packageJson = JSON.parse(
+  readFileSync(resolve(__dirname, "../package.json"), "utf-8")
+);
+const VERSION = packageJson.version;
 
 function showHelp(): void {
   console.log(`
@@ -23,8 +31,8 @@ AuditClaw v${VERSION} - Security scanner for OpenClaw
 
 Usage:
   auditclaw scan [options]     Scan for known vulnerabilities
-  auditclaw check [options]    Check runtime configuration (Phase 2)
-  auditclaw report             Generate comprehensive report (Phase 3)
+  auditclaw check [options]    Check runtime configuration
+  auditclaw report             Generate comprehensive report
   auditclaw --help             Show this help
   auditclaw --version          Show version
 
@@ -33,11 +41,16 @@ Scan Options:
   --format <md|json|terminal>  Output format (default: terminal)
   --output <path>              Save to file instead of stdout
 
+Check Options:
+  --fix                        Interactively apply fixes for failed checks
+
 Examples:
   auditclaw scan
   auditclaw scan --version 2026.2.10
   auditclaw scan --format md --output report.md
-  auditclaw scan --format json > scan-result.json
+  auditclaw check
+  auditclaw check --fix
+  auditclaw report
 `);
 }
 
@@ -68,7 +81,7 @@ function parseArgs(
   return { command, options };
 }
 
-function main(): void {
+async function main(): Promise<void> {
   const { command, options } = parseArgs(process.argv);
 
   // Global flags (only when no command specified)
@@ -104,7 +117,7 @@ function main(): void {
         const checkOpts: CheckOptions = {
           fix: !!options.fix,
         };
-        const exitCode = checkCommand(checkOpts);
+        const exitCode = await checkCommand(checkOpts);
         process.exit(exitCode);
       }
 
@@ -126,4 +139,7 @@ function main(): void {
   }
 }
 
-main();
+main().catch((error) => {
+  console.error(`Fatal error: ${error instanceof Error ? error.message : String(error)}`);
+  process.exit(2);
+});

@@ -18,7 +18,7 @@ export interface CheckOptions {
 /**
  * Execute check command
  */
-export function checkCommand(options: CheckOptions): number {
+export async function checkCommand(options: CheckOptions): Promise<number> {
   const db = loadVulnerabilityDB();
   const checks = db.runtimeChecks;
 
@@ -70,7 +70,7 @@ export function checkCommand(options: CheckOptions): number {
   if (options.fix && counts.FAIL > 0) {
     const failures = results.filter((r) => r.status === "FAIL");
     console.log("Attempting to fix failed checks...\n");
-    applyFixes(failures);
+    await applyFixes(failures);
   }
 
   // Exit code: 1 if any failures, 0 otherwise

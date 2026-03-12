@@ -28,12 +28,20 @@ graph LR
 
 ### 1. CLIツール（フル機能版）
 
-脆弱性スキャンとランタイム設定チェックが可能なCLIツール:
+脆弱性スキャンとランタイム設定チェックが可能なCLIツール。
+
+> **注意:** 開発中のツールです。リポジトリをクローンして `npm run dev` で実行してください:
 
 ```bash
-npx auditclaw scan          # 脆弱性スキャン
-npx auditclaw check         # ランタイム設定チェック
-npx auditclaw report        # 統合レポート生成
+# クローン＆セットアップ
+git clone https://github.com/natsuki/auditclaw.git
+cd auditclaw
+npm install
+
+# コマンド実行
+npm run dev scan          # 脆弱性スキャン
+npm run dev check         # ランタイム設定チェック
+npm run dev report        # 統合レポート生成
 ```
 
 **チェック内容:**
@@ -45,21 +53,23 @@ npx auditclaw report        # 統合レポート生成
 
 ```bash
 # 特定バージョンをスキャン
-npx auditclaw scan --version 2026.2.10
+npm run dev scan -- --version 2026.2.10
 
 # 出力形式の指定
-npx auditclaw scan --format md --output report.md
-npx auditclaw scan --format json > scan-result.json
+npm run dev scan -- --format md --output report.md
+npm run dev scan -- --format json > scan-result.json
 
 # ランタイム設定チェック
-npx auditclaw check
+npm run dev check
 
 # 対話的自動修正モード
-npx auditclaw check --fix
+npm run dev check -- --fix
 
 # 統合レポート生成（scan + check）
-npx auditclaw report
+npm run dev report
 ```
+
+npm公開後は `npx auditclaw` で直接実行できるようになります。
 
 ### 2. クイックスキャン（軽量版）
 

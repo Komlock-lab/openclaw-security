@@ -15,13 +15,20 @@ graph LR
 
 ## 1. CLI Tool (Full Version)
 
-Comprehensive security scanner with vulnerability detection and runtime checks:
+Comprehensive security scanner with vulnerability detection and runtime checks.
+
+> **Note:** This tool is under development. To use it, clone the repository and run with `npm run dev`:
 
 ```bash
-# Install and run
-npx auditclaw scan          # Scan for vulnerabilities
-npx auditclaw check         # Check runtime configuration
-npx auditclaw report        # Generate comprehensive report
+# Clone and setup
+git clone https://github.com/natsuki/auditclaw.git
+cd auditclaw
+npm install
+
+# Run commands
+npm run dev scan          # Scan for vulnerabilities
+npm run dev check         # Check runtime configuration
+npm run dev report        # Generate comprehensive report
 ```
 
 **What it checks:**
@@ -33,21 +40,23 @@ npx auditclaw report        # Generate comprehensive report
 
 ```bash
 # Scan specific version
-npx auditclaw scan --version 2026.2.10
+npm run dev scan -- --version 2026.2.10
 
 # Output formats
-npx auditclaw scan --format md --output report.md
-npx auditclaw scan --format json > scan-result.json
+npm run dev scan -- --format md --output report.md
+npm run dev scan -- --format json > scan-result.json
 
 # Runtime configuration check
-npx auditclaw check
+npm run dev check
 
 # Interactive fix mode
-npx auditclaw check --fix
+npm run dev check -- --fix
 
 # Comprehensive report (scan + check)
-npx auditclaw report
+npm run dev report
 ```
+
+Once published to npm, you'll be able to use `npx auditclaw` directly.
 
 ### Quick Scan (Lightweight)
 

@@ -2,7 +2,7 @@
  * Report Command - Generate comprehensive security report
  */
 
-import { writeFileSync } from "node:fs";
+import { writeFileSync, mkdirSync } from "node:fs";
 import { execSync } from "node:child_process";
 import { loadVulnerabilityDB, getVulnerabilitiesForVersion } from "../lib/db.js";
 import { executeAllChecks, groupChecksByCategory } from "../lib/checker.js";
@@ -168,6 +168,8 @@ export function reportCommand(): number {
   // Save report
   const filename = `reports/${timestamp}-security-report.md`;
   try {
+    // Ensure reports directory exists
+    mkdirSync("reports", { recursive: true });
     writeFileSync(filename, report, "utf-8");
     console.log(`✓ Report saved to: ${filename}\n`);
   } catch (error) {

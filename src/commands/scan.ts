@@ -3,7 +3,8 @@
  */
 
 import { execSync } from "node:child_process";
-import { writeFileSync } from "node:fs";
+import { writeFileSync, mkdirSync } from "node:fs";
+import { dirname } from "node:path";
 import {
   loadVulnerabilityDB,
   getVulnerabilitiesForVersion,
@@ -41,15 +42,16 @@ export function scanCommand(options: ScanOptions): number {
   const db = loadVulnerabilityDB();
 
   // Determine version
-  let version = options.version;
+  let version: string = options.version || "";
   if (!version) {
-    version = detectOpenClawVersion();
-    if (!version) {
+    const detected = detectOpenClawVersion();
+    if (!detected) {
       console.error(
         "Error: Could not detect OpenClaw version. Specify with --version."
       );
       return 2;
     }
+    version = detected;
   }
 
   // Get vulnerabilities
@@ -70,6 +72,11 @@ export function scanCommand(options: ScanOptions): number {
 
   // Output
   if (options.output) {
+    // Ensure parent directory exists
+    const dir = dirname(options.output);
+    if (dir && dir !== ".") {
+      mkdirSync(dir, { recursive: true });
+    }
     writeFileSync(options.output, formatted, "utf-8");
     console.log(`Report saved to: ${options.output}`);
   } else {
