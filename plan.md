@@ -287,11 +287,11 @@ Phase 5: tests/{category}/ に保存
 
 #### High（1週間以内）
 
-- [x] **sandbox-escape テストスイート** (12件)
+- [x] **sandbox-escape テストスイート** (12件) ✅ 完了
   - [x] `tests/sandbox-escape/README.md` 作成
-  - [ ] Part 1 ベクター別 (4件): シンボリックリンク, ハードリンク, Docker bind mount, ACP継承
-  - [ ] Part 2 テクニック別 (6件): TOCTOU, /proc/sys リーク, 環境変数上書き, tmpdir脱出, chroot回避, FDリーク
-  - [ ] Part 3 CI/CD連携 (2件): CI環境サンドボックス無効化, プラグインインストール時パストラバーサル
+  - [x] Part 1 ベクター別 (4件): シンボリックリンク, ハードリンク, Docker bind mount, ACP継承
+  - [x] Part 2 テクニック別 (6件): TOCTOU, /proc/sys リーク, 環境変数上書き, tmpdir脱出, chroot回避, FDリーク
+  - [x] Part 3 CI/CD連携 (2件): CI環境サンドボックス無効化, プラグインインストール時パストラバーサル
 - [x] **agent-hijack テストスイート** (12件)
   - [x] `tests/agent-hijack/README.md` 作成
   - [ ] Part 1 ベクター別 (5件): WebSocket RCE, gatewayUrl token窃取, heredoc injection, systemd newline injection, Gateway Node Invoke bypass
