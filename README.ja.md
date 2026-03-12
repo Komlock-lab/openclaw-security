@@ -24,44 +24,61 @@ graph LR
 2. **試す**: 攻撃テストケースを作ってボットに仮想攻撃し弱点を検証
 3. **守る**: ベストプラクティスを整理してセキュリティガイドを作成
 
-## 使い方（Claude Code スラッシュコマンド）
+## 使い方
 
-### 調査する
+### 1. CLIツール（フル機能版）
+
+脆弱性スキャンとランタイム設定チェックが可能なCLIツール:
+
 ```bash
-/research-vuln prompt-injection       # 脆弱性事例を調査
-/research-updates openclaw            # アップデート情報を調査
-/research-bestpractice llm-security   # ベストプラクティスを調査
+npx auditclaw scan          # 脆弱性スキャン
+npx auditclaw check         # ランタイム設定チェック
+npx auditclaw report        # 統合レポート生成
 ```
 
-### バージョン診断する
-```bash
-/check-version 2026.2.10             # 使用中のバージョンの脆弱性を診断
+**チェック内容:**
+- **65件以上の既知脆弱性** (GHSA/CVE) をバージョン別にマッチング
+- **19項目のランタイム設定チェック** - サンドボックス、Gateway認証、exec許可リストなど
+- **恒久的な警告** - プロンプトインジェクションリスク、DMペアリング総当たり攻撃など
 
-# スクリプトで直接実行も可能
-npx tsx scripts/version-check.ts 2026.2.10
+### コマンド例
+
+```bash
+# 特定バージョンをスキャン
+npx auditclaw scan --version 2026.2.10
+
+# 出力形式の指定
+npx auditclaw scan --format md --output report.md
+npx auditclaw scan --format json > scan-result.json
+
+# ランタイム設定チェック
+npx auditclaw check
+
+# 対話的自動修正モード
+npx auditclaw check --fix
+
+# 統合レポート生成（scan + check）
+npx auditclaw report
 ```
 
-### テストする
-```bash
-/create-testcase prompt-injection     # 攻撃テストケースを作成
-/run-test prompt-injection            # テストを実行
-```
+### 2. クイックスキャン（軽量版）
 
-### レポートする
-```bash
-/generate-report security-posture     # セキュリティ総合評価レポート
-```
-
-## クイックスキャン
+インストール不要のcurlワンライナー（脆弱性スキャンのみ）:
 
 ```bash
 curl -sL https://raw.githubusercontent.com/natsuki/auditclaw/main/skill-dist/auditclaw-scan/scan.sh | bash
 ```
 
-これだけ。OpenClawのバージョンを自動検出してMarkdownセキュリティレポートを出力します。特定バージョンを指定する場合:
+> **注意:** curlワンライナーは脆弱性スキャンのみ。ランタイム設定チェックはフル版CLIツール（`npx auditclaw check`）を使用してください。
+
+### 3. Claude Code スラッシュコマンド（開発者向け）
 
 ```bash
-curl -sL https://raw.githubusercontent.com/natsuki/auditclaw/main/skill-dist/auditclaw-scan/scan.sh | bash -s 2026.2.10
+/research-vuln prompt-injection       # 脆弱性事例を調査
+/research-updates openclaw            # アップデート情報を調査
+/research-bestpractice llm-security   # ベストプラクティスを調査
+/create-testcase prompt-injection     # 攻撃テストケースを作成
+/run-test prompt-injection            # テストを実行
 ```
 
 ## OpenClawスキル統合

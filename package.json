@@ -3,6 +3,14 @@
   "version": "0.1.0",
   "type": "module",
   "description": "Security verification and knowledge base repository for OpenClaw",
-  "scripts": {},
+  "bin": {
+    "auditclaw": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/cli.ts",
+    "build-skill": "tsx scripts/build-skill.ts",
+    "test": "node --test src/__tests__/**/*.test.ts"
+  },
   "dependencies": {}
 }

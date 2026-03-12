@@ -13,24 +13,51 @@ graph LR
     C["**Knowledge Base**\nSecurity research & guides"]
 ```
 
-## 1. Quick Scan (CLI)
+## 1. CLI Tool (Full Version)
 
-No install required. Run this and get a Markdown security report:
+Comprehensive security scanner with vulnerability detection and runtime checks:
+
+```bash
+# Install and run
+npx auditclaw scan          # Scan for vulnerabilities
+npx auditclaw check         # Check runtime configuration
+npx auditclaw report        # Generate comprehensive report
+```
+
+**What it checks:**
+- **65+ known vulnerabilities** (GHSA/CVE) mapped by version (CalVer)
+- **19 runtime configuration checks** - Sandbox, Gateway auth, exec allowlist, ACP dispatch, etc.
+- **Permanent warnings** - Prompt injection risks, DM pairing brute-force, etc.
+
+### Commands
+
+```bash
+# Scan specific version
+npx auditclaw scan --version 2026.2.10
+
+# Output formats
+npx auditclaw scan --format md --output report.md
+npx auditclaw scan --format json > scan-result.json
+
+# Runtime configuration check
+npx auditclaw check
+
+# Interactive fix mode
+npx auditclaw check --fix
+
+# Comprehensive report (scan + check)
+npx auditclaw report
+```
+
+### Quick Scan (Lightweight)
+
+No install required. Curl one-liner for quick vulnerability scan:
 
 ```bash
 curl -sL https://raw.githubusercontent.com/natsuki/auditclaw/main/skill-dist/auditclaw-scan/scan.sh | bash
 ```
 
-Auto-detects your OpenClaw version. To scan a specific version:
-
-```bash
-curl -sL https://raw.githubusercontent.com/natsuki/auditclaw/main/skill-dist/auditclaw-scan/scan.sh | bash -s 2026.2.10
-```
-
-**What it checks:**
-- 65+ known GHSA/CVE vulnerabilities mapped by version (CalVer)
-- 19 runtime configuration items (sandbox, Gateway auth, exec allowlist, ACP dispatch, etc.)
-- Permanent warnings (prompt injection, DM pairing)
+> **Note:** The curl one-liner only scans vulnerabilities. For runtime configuration checks, use the full CLI tool (`npx auditclaw check`).
 
 ## 2. OpenClaw Skill
 
