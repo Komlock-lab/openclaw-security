@@ -292,11 +292,11 @@ Phase 5: tests/{category}/ に保存
   - [x] Part 1 ベクター別 (4件): シンボリックリンク, ハードリンク, Docker bind mount, ACP継承
   - [x] Part 2 テクニック別 (6件): TOCTOU, /proc/sys リーク, 環境変数上書き, tmpdir脱出, chroot回避, FDリーク
   - [x] Part 3 CI/CD連携 (2件): CI環境サンドボックス無効化, プラグインインストール時パストラバーサル
-- [x] **agent-hijack テストスイート** (12件)
+- [x] **agent-hijack テストスイート** (12件) ✅ 完了
   - [x] `tests/agent-hijack/README.md` 作成
-  - [ ] Part 1 ベクター別 (5件): WebSocket RCE, gatewayUrl token窃取, heredoc injection, systemd newline injection, Gateway Node Invoke bypass
-  - [ ] Part 2 テクニック別 (5件): Docker PATH injection, sshNodeCommand injection, macOS Keychain injection, SSRF IPv6, CWD prompt injection
-  - [ ] Part 3 マルチエージェント (2件): ACP resource_link PI, agent間なりすまし
+  - [x] Part 1 ベクター別 (5件): WebSocket RCE, gatewayUrl token窃取, heredoc injection, systemd newline injection, Gateway Node Invoke bypass
+  - [x] Part 2 テクニック別 (5件): Docker PATH injection, sshNodeCommand injection, macOS Keychain injection, SSRF IPv6, CWD prompt injection
+  - [x] Part 3 マルチエージェント (2件): ACP resource_link PI, agent間なりすまし
 
 #### Medium（2週間以内）
 
