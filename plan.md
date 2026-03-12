@@ -300,11 +300,11 @@ Phase 5: tests/{category}/ に保存
 
 #### Medium（2週間以内）
 
-- [x] **skill-abuse テストスイート** (10件)
+- [x] **skill-abuse テストスイート** (10件) ✅ 完了
   - [x] `tests/skill-abuse/README.md` 作成
-  - [ ] exec allowlist バイパス系 (4件): GNU long option, env -S, PowerShell encoded, wrapper depth
-  - [ ] スキルサプライチェーン系 (4件): Unicode隠蔽, SKILL.md改竄, 外部URL取得, 権限昇格チェーン
-  - [ ] 承認バインディング系 (2件): system.run ID mismatch, PATH token rebind
+  - [x] exec allowlist バイパス系 (4件): GNU long option, env -S, PowerShell encoded, wrapper depth
+  - [x] スキルサプライチェーン系 (4件): Unicode隠蔽, SKILL.md改竄, 外部URL取得, 権限昇格チェーン
+  - [x] 承認バインディング系 (2件): system.run ID mismatch, PATH token rebind
 - [x] **channel-spoofing テストスイート** (12件)
   - [x] `tests/channel-spoofing/README.md` 作成
   - [ ] webhook/token系 (3件): Telegram secret未検証, webhook署名偽装, Gateway認証なし接続
