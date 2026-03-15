@@ -75,187 +75,187 @@
 
 ---
 
-### Wave 2: High（1週間以内） — 12ファイル
+### Wave 2: High（1週間以内） — 12ファイル ✅ 完了
 
-#### Task 2.1: toctou.md (EN)
+#### Task 2.1: toctou.md (EN) ✅
 - **優先度**: High
 - **工数**: 1時間
 - **データソース**:
   - `knowledge/vulnerabilities/sandbox-escape/2026-03-12-toctou-sandbox-bypass.md`
   - `data/vulnerability-db.json` (TOCTOU 3件)
 
-#### Task 2.2: toctou.md (JA)
+#### Task 2.2: toctou.md (JA) ✅
 - **優先度**: High
 - **工数**: 1時間
 
-#### Task 2.3: acp-security.md (EN)
+#### Task 2.3: acp-security.md (EN) ✅
 - **優先度**: High
 - **工数**: 1時間
 - **データソース**:
   - `knowledge/vulnerabilities/sandbox-escape/2026-03-12-acp-sandbox-inheritance.md`
   - `data/vulnerability-db.json` (ACP関連 4件)
 
-#### Task 2.4: acp-security.md (JA)
+#### Task 2.4: acp-security.md (JA) ✅
 - **優先度**: High
 - **工数**: 1時間
 
-#### Task 2.5: rce.md (EN)
+#### Task 2.5: rce.md (EN) ✅
 - **優先度**: High
 - **工数**: 1.5時間
 - **データソース**: `data/vulnerability-db.json` (RCE 7件)
 
-#### Task 2.6: rce.md (JA)
+#### Task 2.6: rce.md (JA) ✅
 - **優先度**: High
 - **工数**: 1時間
 
-#### Task 2.7: path-traversal.md (EN)
+#### Task 2.7: path-traversal.md (EN) ✅
 - **優先度**: High
 - **工数**: 1.5時間
 - **データソース**: `data/vulnerability-db.json` (Path Traversal 6件)
 
-#### Task 2.8: path-traversal.md (JA)
+#### Task 2.8: path-traversal.md (JA) ✅
 - **優先度**: High
 - **工数**: 1時間
 
-#### Task 2.9: owasp-llm-mapping.md (EN)
+#### Task 2.9: owasp-llm-mapping.md (EN) ✅
 - **優先度**: High
 - **工数**: 1時間
 - **データソース**: `knowledge/best-practices/2026-03-12-owasp-llm-top10-mapping.md`
 
-#### Task 2.10: owasp-llm-mapping.md (JA)
+#### Task 2.10: owasp-llm-mapping.md (JA) ✅
 - **優先度**: High
 - **工数**: 1時間
 
-#### Task 2.11: channel-security.md (EN)
+#### Task 2.11: channel-security.md (EN) ✅
 - **優先度**: High
 - **工数**: 2時間
 - **データソース**: `knowledge/vulnerabilities/auth-bypass/2026-03-12-channel-auth-bypass-patterns.md`
 - **特記事項**: 攻撃パターン記事を防御策ガイドに変換
 
-#### Task 2.12: channel-security.md (JA)
+#### Task 2.12: channel-security.md (JA) ✅
 - **優先度**: High
 - **工数**: 1時間
 
-**Wave 2 合計**: 12ファイル、13時間
+**Wave 2 合計**: 12ファイル、13時間 ✅ 完了（2026-03-15）
 
 ---
 
-### Wave 3: High（テストガイド） — 4ファイル
+### Wave 3: High（テストガイド） — 4ファイル ✅ 完了
 
-#### Task 3.1: sandbox-escape-guide.md (EN)
+#### Task 3.1: sandbox-escape-guide.md (EN) ✅
 - **優先度**: High
 - **工数**: 0.5時間
 - **データソース**: `tests/sandbox-escape/README.md`
 - **作業内容**: テストREADMEをGitBookフォーマットに調整してコピー
 
-#### Task 3.2: sandbox-escape-guide.md (JA)
+#### Task 3.2: sandbox-escape-guide.md (JA) ✅
 - **優先度**: High
 - **工数**: 0.5時間
 
-#### Task 3.3: agent-hijack-guide.md (EN)
+#### Task 3.3: agent-hijack-guide.md (EN) ✅
 - **優先度**: High
 - **工数**: 0.5時間
 - **データソース**: `tests/agent-hijack/README.md`
 
-#### Task 3.4: agent-hijack-guide.md (JA)
+#### Task 3.4: agent-hijack-guide.md (JA) ✅
 - **優先度**: High
 - **工数**: 0.5時間
 
-**Wave 3 合計**: 4ファイル、2時間
+**Wave 3 合計**: 4ファイル、2時間 ✅ 完了（2026-03-15）
 
 **Wave 1-3 合計 (Critical-High)**: 20ファイル、21時間
 
 ---
 
-### Wave 4: Medium（2週間以内） — 12ファイル
+### Wave 4: Medium（2週間以内） — 14ファイル ✅ 完了
 
-#### Task 4.1: command-injection.md (EN)
+#### Task 4.1: command-injection.md (EN) ✅
 - **優先度**: Medium
 - **工数**: 1時間
 - **データソース**: `data/vulnerability-db.json` (Command Injection 3件)
 
-#### Task 4.2: command-injection.md (JA)
+#### Task 4.2: command-injection.md (JA) ✅
 - **優先度**: Medium
 - **工数**: 0.5時間
 
-#### Task 4.3: ssrf.md (EN)
+#### Task 4.3: ssrf.md (EN) ✅
 - **優先度**: Medium
 - **工数**: 1.5時間
 - **データソース**: `data/vulnerability-db.json` (SSRF 5件)
 
-#### Task 4.4: ssrf.md (JA)
+#### Task 4.4: ssrf.md (JA) ✅
 - **優先度**: Medium
 - **工数**: 1時間
 
-#### Task 4.5: v2026.3.x-changelog.md (EN)
+#### Task 4.5: v2026.3.x-changelog.md (EN) ✅
 - **優先度**: Medium
 - **工数**: 2時間
 - **データソース**: `data/vulnerability-db.json` (`fixedIn: "2026.3.*"`)
 - **作業内容**: v2026.3.1~3.8の全35件のアドバイザリをバージョン別にリスト化
 
-#### Task 4.6: v2026.3.x-changelog.md (JA)
+#### Task 4.6: v2026.3.x-changelog.md (JA) ✅
 - **優先度**: Medium
 - **工数**: 1時間
 
-#### Task 4.7: breaking-changes-guide.md (EN)
+#### Task 4.7: breaking-changes-guide.md (EN) ✅
 - **優先度**: Medium
 - **工数**: 1時間
 - **データソース**: vulnerability-db.json + knowledge記事
 - **作業内容**: 承認バインディング、サンドボックス継承等の後方互換性のない変更を解説
 
-#### Task 4.8: breaking-changes-guide.md (JA)
+#### Task 4.8: breaking-changes-guide.md (JA) ✅
 - **優先度**: Medium
 - **工数**: 1時間
 
-#### Task 4.9: skill-abuse-guide.md (EN)
+#### Task 4.9: skill-abuse-guide.md (EN) ✅
 - **優先度**: Medium
 - **工数**: 0.5時間
 - **データソース**: `tests/skill-abuse/README.md`
 
-#### Task 4.10: skill-abuse-guide.md (JA)
+#### Task 4.10: skill-abuse-guide.md (JA) ✅
 - **優先度**: Medium
 - **工数**: 0.5時間
 
-#### Task 4.11: channel-spoofing-guide.md (EN)
+#### Task 4.11: channel-spoofing-guide.md (EN) ✅
 - **優先度**: Medium
 - **工数**: 0.5時間
 - **データソース**: `tests/channel-spoofing/README.md`
 
-#### Task 4.12: channel-spoofing-guide.md (JA)
+#### Task 4.12: channel-spoofing-guide.md (JA) ✅
 - **優先度**: Medium
 - **工数**: 0.5時間
 
-#### Task 4.13: secret-leakage-guide.md (EN)
+#### Task 4.13: secret-leakage-guide.md (EN) ✅
 - **優先度**: Medium
 - **工数**: 0.5時間
 - **データソース**: `tests/secret-leakage/README.md`
 
-#### Task 4.14: secret-leakage-guide.md (JA)
+#### Task 4.14: secret-leakage-guide.md (JA) ✅
 - **優先度**: Medium
 - **工数**: 0.5時間
 
-**Wave 4 合計**: 14ファイル、12時間
+**Wave 4 合計**: 14ファイル、12時間 ✅ 完了（2026-03-15）
 
 ---
 
-### Wave 5: Low（余力があれば） — 2ファイル
+### Wave 5: Low（余力があれば） — 2ファイル ✅ 完了
 
-#### Task 5.1: dos.md (EN)
+#### Task 5.1: dos.md (EN) ✅
 - **優先度**: Low
 - **工数**: 1時間
 - **データソース**: `data/vulnerability-db.json` (DoS 4件)
 
-#### Task 5.2: dos.md (JA)
+#### Task 5.2: dos.md (JA) ✅
 - **優先度**: Low
 - **工数**: 0.5時間
 
-**Wave 5 合計**: 2ファイル、1.5時間
+**Wave 5 合計**: 2ファイル、1.5時間 ✅ 完了（2026-03-15）
 
 ---
 
-### Wave 6: SUMMARY.md更新（最後） — 2ファイル
+### Wave 6: SUMMARY.md更新（最後） — 2ファイル ✅ 完了
 
-#### Task 6.1: docs/en/SUMMARY.md 更新
+#### Task 6.1: docs/en/SUMMARY.md 更新 ✅
 - **優先度**: Must（最後）
 - **工数**: 0.5時間
 - **作業内容**:
@@ -263,12 +263,12 @@
   2. カテゴリ順に整理
   3. リンク切れチェック
 
-#### Task 6.2: docs/ja/SUMMARY.md 更新
+#### Task 6.2: docs/ja/SUMMARY.md 更新 ✅
 - **優先度**: Must（最後）
 - **工数**: 0.5時間
 - **作業内容**: 英語版と同様
 
-**Wave 6 合計**: 2ファイル、1時間
+**Wave 6 合計**: 2ファイル、1時間 ✅ 完了（2026-03-15）
 
 ---
 
